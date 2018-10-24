@@ -14,7 +14,7 @@ logger = logging.getLogger('BMEGA')
 
 class BMEGModule(Bioagent):
     name = 'BMEGA'
-    tasks = ['FIND-GENE-MUTATION-DATASET', ]
+    tasks = ['FIND-GENE-MUTATION-DATASET','FIND-MUTATION-FREQUENCY', 'FIND-COMMON-PHENOTYPES-FOR-GENES', 'FIND-DRUGS-FOR-MUTATION-DATASET' ]
 
     def __init__(self, **kwargs):
         self.BA = BMEGAgent()
@@ -57,6 +57,46 @@ class BMEGModule(Bioagent):
         reply.sets('mutfreq', result)
 
         return reply
+
+    def respond_find_drugs_for_mutation_dataset(self, content):
+        genes_arg = content.gets('GENES')
+
+        if not genes_arg:
+            return self.make_failure('MISSING_MECHANISM')
+
+        gene_names = _get_term_names(genes_arg)
+
+        if not gene_names:
+            return self.make_failure('MISSING_MECHANISM')
+
+        gene_list = []
+        for gene_name in gene_names:
+            gene_list.append(str(gene_name))
+
+
+        dataset_arg = content.gets('DATASET')
+
+        if not dataset_arg:
+            dataset_arg = "ccle"  # default cell line
+
+        result = self.BA.find_drugs_for_mutation_dataset(gene_list, dataset_arg.lower())
+
+        if not result:
+            return self.make_failure('NO_DRUGS_FOUND')
+
+        reply = KQMLList('SUCCESS')
+
+        drugs = KQMLList()
+        for r in result:
+            drugs.append(r)
+
+        reply.set('drugs', drugs)
+
+        # drugs = KQMLList.from_string(drugs.to_string())
+        # reply.set('drugs', drugs)
+
+        return reply
+
 
 
 def _get_term_names(term_str):

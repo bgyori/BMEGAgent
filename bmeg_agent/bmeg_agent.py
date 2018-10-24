@@ -77,11 +77,10 @@ disease_names = {
 'UTERINE CANCER':	'UCS',
 'UVEAL MELANOMA':	'UVM',
 }
+
 class BMEGAgent:
     def __init__(self):
         print("Connected to bmeg")
-
-
 
     def get_tcga_abbr(self, long_name):
         return disease_names[long_name.upper()]
@@ -150,41 +149,39 @@ class BMEGAgent:
 
 
 
-    def find_mutations_on_gene(self, gene):
-        """
-        Returns the the mutations on a gene
-        :param genes: Gene names as a list
-        :return:
-        """
+    # def find_mutations_on_gene(self, gene):
+    #     """
+    #     Returns the the mutations on a gene
+    #     :param genes: Gene names as a list
+    #     :return:
+    #     """
+    #
+    #     gene_id = 0
+    #     for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", gene)):
+    #         gene_id = i.gid
+    #
+    #     #
+    #     q = O.query().V(gene_id).in_("variantIn").in_("featureOf").out("environmentFor")
+    #     for k in q: #k['data']['description'] in q:
+    #         print(k)
+    #
+    #
+    #     #
+    #     #     phenotypes.append([])
+    #     #
+    #     #     for k in q:
+    #     #         if k['data']['description'] not in phenotypes[ind]:
+    #     #             phenotypes[ind].append(k['data']['description'])
+    #     #     ind +=1
+    #     #
+    #     # intSet = set(phenotypes[0])
+    #     # for i in range(1, len(phenotypes)): #get intersection of two sets
+    #     #    intSet = intSet & set(phenotypes[i])
+    #     #
+    #     # return list(intSet)
 
 
-        gene_id = 0
-        for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", gene)):
-            gene_id = i.gid
-
-
-        #
-        q = O.query().V(gene_id).in_("variantIn").in_("featureOf").out("environmentFor")
-        for k in q: #k['data']['description'] in q:
-            print(k)
-
-
-        #
-        #     phenotypes.append([])
-        #
-        #     for k in q:
-        #         if k['data']['description'] not in phenotypes[ind]:
-        #             phenotypes[ind].append(k['data']['description'])
-        #     ind +=1
-        #
-        # intSet = set(phenotypes[0])
-        # for i in range(1, len(phenotypes)): #get intersection of two sets
-        #    intSet = intSet & set(phenotypes[i])
-        #
-        # return list(intSet)
-
-
-    def find_drugs_for_gene_mutation_dataset(self, genes,  dataset):
+    def find_drugs_for_mutation_dataset(self, genes, dataset):
 
         q = O.query().V().where(gripql.eq("_label", "Biosample"))
         q = q.where(gripql.and_(gripql.eq("source", dataset))).render({"id": "_gid"})
@@ -217,18 +214,22 @@ class BMEGAgent:
 
         # Get response values for the positive set (samples with mutation) and collect AUC value by drug
         pos_response = {}
+        compound = {}
         for g in genes:
             pos_response[g] = {}
 
             for row in O.query().V(list(mut_samples[g])).in_("responseFor").mark("a").out("responseTo").mark("b").select(["a", "b"]):
-                for v in row['a']['data']['summary']:
 
+                for v in row['a']['data']['summary']:
                     if v['type'] == "AMAX":
-                        compound = row['b']['gid']
-                        if compound not in pos_response[g]:
-                            pos_response[g][compound] = [ v["value"] ]
+                        id = row['b']['gid']
+                        compound[id] = row['b']['data']['name']
+
+                        if id not in pos_response[g]:
+                            pos_response[g][id] = [ v["value"] ]
                         else:
-                            pos_response[g][compound].append(v["value"])
+                            pos_response[g][id].append(v["value"])
+
 
         #Get response values for the negative set (samples without mutation) and collect AUC value by drug
         neg_response = {}
@@ -238,11 +239,13 @@ class BMEGAgent:
                     ["a", "b"]):
                 for v in row['a']['data']['summary']:
                     if v['type'] == "AMAX":
-                        compound = row['b']['gid']
-                        if compound not in neg_response[g]:
-                            neg_response[g][compound] = [v["value"]]
+                        id = row['b']['gid']
+                        compound[id] = row['b']['data']['name']
+
+                        if id not in neg_response[g]:
+                            neg_response[g][id] = [v["value"]]
                         else:
-                            neg_response[g][compound].append(v["value"])
+                            neg_response[g][id].append(v["value"])
 
         #Collect t-test statistics
         drugs = set(itertools.chain.from_iterable(i.keys() for i in pos_response.values()))
@@ -250,22 +253,31 @@ class BMEGAgent:
         for drug in drugs:
             for g in genes:
                 if drug in pos_response[g] and drug in neg_response[g]:
-                    row = {"drug": drug, "mutation": g}
+                    # row = {"drugId": drug, "drugName": compound[drug], "gene": g}
 
                     mut_values = pos_response[g][drug]
                     norm_values = neg_response[g][drug]
                     if len(mut_values) > 5 and len(norm_values) > 5:
                         s = stats.ttest_ind(mut_values, norm_values, equal_var=False)
-                        row["t-statistic"] = s.statistic
-                        row["t-pvalue"] = s.pvalue
-                        out.append(row)
+                        if s.pvalue <= 0.05 and s.statistic > 0: # means drug is significantly effective
+                            out.append(compound[drug])
+                            # row["t-statistic"] = s.statistic
+                            # row["t-pvalue"] = s.pvalue
+                            # out.append(row)
 
 
-        pd = pandas.DataFrame(out, columns=["drug", "mutation", "t-statistic", "t-pvalue"]).sort_values("t-pvalue")
 
-        return pd
+        # print(out)
+        return out
+        # pd = pandas.DataFrame(out, columns=["drug id", "drug name", "mutation", "t-statistic", "t-pvalue"])
+
+
+        # print(pd)
+        # return pd
+
 
 # ba = BMEGAgent()
 # ba.find_mutations_on_gene("BRAF")
 # ba.find_common_phenotypes_for_genes(["BRAF", 'AKT1'])
+# ba.find_drugs_for_gene_mutation_dataset(["CDKN2A", "PTEN", "TP53",], "ccle")
 # ba.find_drugs_for_gene_mutation_dataset(["CDKN2A", "PTEN", "TP53", "SMAD4"], "ccle")

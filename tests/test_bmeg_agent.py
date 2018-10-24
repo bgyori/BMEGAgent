@@ -8,7 +8,7 @@ from bioagents.tests.integration import _IntegrationTest
 from bioagents.tests.util import ekb_kstring_from_text, ekb_from_text, get_request
 import time
 
-ca = BMEGAgent.BMEGA()
+ba = BMEGAgent()
 
 
 class TestBMEGAgent(_IntegrationTest):
@@ -34,3 +34,31 @@ class TestMutFreq(_IntegrationTest):
         assert output.head() == 'SUCCESS', output
         mut_freq = output.gets('mutfreq')
         assert mut_freq.startswith('0.81')
+
+
+class TestDrugMutationDataset(_IntegrationTest):
+    def __init__(self, *args):
+        super(TestDrugMutationDataset, self).__init__(BMEGModule)
+
+    def create_message_1(self):
+        content = KQMLList('FIND-DRUGS-FOR-MUTATION-DATASET')
+        genes = ekb_from_text('TP53')
+        content.sets('genes', str(genes))
+
+        content.sets('dataset', "ccle")
+
+        msg = get_request(content)
+        return msg, content
+
+    def check_response_to_message_1(self, output):
+        assert output.head() == 'SUCCESS', output
+
+        # test_res = KQMLList.from_string('((:score 0.0 :group (TP53 CDH1)) '
+        #                                 '(:score 0.0 :group (CDH1 TP53)) '
+        #                                 '(:score 0.0 :group (GATA3 TP53 CDH1)) '
+        #                                 '(:score 0.0 :group (CTCF TP53 CDH1 GATA3)))')
+        #
+        drugs = output.gets('drugs')
+
+
+        assert  'PLX-4720' in drugs
