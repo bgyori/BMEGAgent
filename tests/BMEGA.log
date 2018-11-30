@@ -1523,3 +1523,695 @@ kqml.kqml_exceptions.KQMLBadOpenException: {
 2018-10-24 13:15:20,698 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
 2018-10-24 13:15:20,698 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
 2018-10-24 13:15:20,698 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-16 15:12:01,800 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:12:01,806 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:12:01,806 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:12:01,812 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:12:01,812 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:12:01,812 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:12:01,812 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:13:18,362 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:13:18,368 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:13:18,368 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:13:18,374 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:13:18,374 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:13:18,374 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:13:18,374 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:26:28,972 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:26:28,975 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:26:28,975 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:26:28,977 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:26:28,977 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:26:28,977 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:26:28,977 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:28:17,582 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:28:17,587 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:28:17,587 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:28:17,589 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:28:17,589 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:28:17,589 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:28:17,589 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:29:12,140 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:29:12,143 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:29:12,143 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:29:12,145 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:29:12,145 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:29:12,145 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:29:12,145 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:29:54,265 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:29:54,268 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:29:54,268 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:29:54,270 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:29:54,270 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:29:54,270 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:29:54,270 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:33:46,602 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:33:46,605 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:33:46,605 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-16 15:33:46,607 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:33:46,607 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-16 15:33:46,607 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-16 15:33:46,607 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-19 13:26:57,539 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:26:57,542 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:26:57,542 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:26:59,674 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:26:59,674 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:26:59,674 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:26:59,674 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:27:02,245 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:27:02,245 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:27:02,245 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:27:02,245 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:34:00,025 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:34:00,033 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:34:00,033 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:34:00,041 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:34:00,041 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:34:00,042 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:34:00,042 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:37:23,801 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:37:23,809 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:37:23,809 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:37:27,377 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:27,377 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:27,377 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:37:27,377 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:37:32,235 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:32,235 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:32,236 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:37:32,236 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:37:47,235 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:37:47,242 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:37:47,242 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:37:47,253 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:47,253 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:47,253 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:37:47,253 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:37:51,954 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:51,954 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:37:51,954 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:37:51,954 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:38:11,235 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:38:11,243 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:38:11,243 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:39:42,982 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:39:42,982 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:39:42,983 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:39:42,983 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:39:52,964 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:39:52,964 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:39:52,965 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:39:52,965 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:42:46,206 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:42:46,213 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:42:46,213 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:42:46,224 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:42:46,224 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:42:46,224 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:42:46,224 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:50:12,489 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:50:12,496 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:50:12,496 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:50:12,507 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:50:12,507 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:50:12,507 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:50:12,507 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:53:48,456 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:53:48,456 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:53:48,799 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:53:48,799 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:54:26,071 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:54:26,074 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:54:26,074 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:54:26,079 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:54:26,079 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:54:26,079 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:54:26,079 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:54:28,748 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:54:28,748 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:54:28,750 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:54:28,750 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:55:01,478 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:55:01,485 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:55:01,485 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 13:55:55,477 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:55:55,477 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 13:55:55,478 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:55:55,478 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 13:56:12,518 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:56:12,518 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 13:56:13,407 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 13:56:13,407 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 97, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 14:01:51,851 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:01:51,854 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:01:51,854 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:01:51,859 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:01:51,859 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:01:51,859 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:01:51,859 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:01:54,508 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 14:01:54,508 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 14:01:54,509 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 96, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 14:01:54,509 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 96, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 14:02:19,165 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:02:19,169 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:02:19,169 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:02:19,171 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-19 14:02:19,171 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-19 14:02:19,171 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-19 14:02:19,171 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-19 14:02:55,510 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:02:55,514 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:02:55,514 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:02:55,522 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:02:55,522 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:02:55,522 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:02:55,522 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:02:58,746 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 14:02:58,746 - ERROR: Bioagents - Could not perform response to FIND-VARIANTS-FOR-GENES
+2018-11-19 14:02:58,746 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 96, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 14:02:58,746 - ERROR: Bioagents - 'NoneType' object has no attribute 'findall'
+Traceback (most recent call last):
+  File "/Users/durupina/CWC/cwc-integ/hms/bioagents/bioagents/__init__.py", line 91, in _respond_to
+    reply_content = resp(content)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 96, in respond_find_variants_for_genes
+    disease_names = _get_term_names(disease_arg)
+  File "/Users/durupina/CWC/cwc-integ/hms/BMEGAgent/bmeg_agent/bmeg_module.py", line 162, in _get_term_names
+    terms = tp.tree.findall('TERM')
+AttributeError: 'NoneType' object has no attribute 'findall'
+2018-11-19 14:03:49,119 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:03:49,123 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:03:49,123 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:03:54,254 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:03:54,254 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:03:54,255 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:03:54,255 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:04:54,587 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:04:54,596 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:04:54,596 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:04:54,609 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:04:54,609 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:04:54,609 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:04:54,609 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:07:07,842 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:07:07,861 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:07:07,861 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:07:07,874 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:07:07,874 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-19 14:07:07,875 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:07:07,875 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-19 14:15:28,700 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:15:28,703 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:15:28,703 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-19 14:15:28,705 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-19 14:15:28,705 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-19 14:15:28,705 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-19 14:15:28,705 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:46,048 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,050 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,050 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,053 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,053 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,053 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,055 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,055 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,055 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,055 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,058 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,058 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,058 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,058 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,058 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,061 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,061 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,061 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,061 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,061 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,061 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,063 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:46,073 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:23:51,966 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:24:04,359 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:26:29,086 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:26:29,089 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:26:29,089 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:26:59,581 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:26:59,585 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:26:59,585 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:51,059 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:51,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:51,066 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:59,906 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:59,909 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:59,909 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:27:59,911 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:27:59,911 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-29 16:27:59,911 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:27:59,911 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-29 16:28:13,416 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:28:13,419 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:28:13,419 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:28:13,421 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:28:13,421 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:28:13,421 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:28:13,421 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:28:13,421 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:28:13,421 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:28:27,175 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:28:27,182 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:28:27,182 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:28:27,189 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:28:27,189 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-29 16:28:27,189 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:28:27,189 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-29 16:30:49,860 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:30:49,864 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:30:49,864 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-29 16:30:49,866 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:30:49,866 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-29 16:30:49,866 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:30:49,866 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-29 16:30:49,866 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-29 16:30:49,866 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:29:17,906 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:29:17,914 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:29:17,914 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:29:17,920 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:29:17,920 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:29:17,920 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:29:17,920 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:29:17,920 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:29:17,920 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:30:18,866 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:30:18,874 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:30:18,874 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:30:18,879 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:30:18,879 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:30:18,879 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:30:18,879 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:30:18,879 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:30:18,879 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:35:36,920 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:35:36,928 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:35:36,928 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:35:54,800 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:35:54,800 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:35:54,802 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:35:54,802 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:35:54,802 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:35:54,802 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:37:44,736 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:37:44,740 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:37:44,740 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:37:44,742 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:37:44,742 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:37:44,742 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:37:44,742 - ERROR: Bioagents - Tried to execute unimplemented task.
+2018-11-30 11:37:44,743 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:37:44,743 - ERROR: Bioagents - Did not find response method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:39:38,968 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:39:38,973 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:39:38,973 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:39:38,975 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:39:38,975 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:39:38,975 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:39:38,975 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:41:36,838 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:41:36,845 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:41:36,845 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:41:36,850 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:41:36,850 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:41:36,850 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:41:36,850 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:42:22,504 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:42:22,507 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:42:22,507 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:42:22,509 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:42:22,509 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 11:42:22,509 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:42:22,509 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 11:42:55,162 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:42:55,166 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:42:55,166 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:42:55,172 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:42:55,172 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:42:55,173 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:42:55,173 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:43:07,707 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:43:07,711 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:43:07,711 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:43:07,718 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:43:07,718 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:43:07,718 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:43:07,718 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:43:30,468 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:43:30,475 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:43:30,475 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:43:30,487 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:43:30,487 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:43:30,488 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:43:30,488 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:44:06,378 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:44:06,382 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:44:06,382 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:44:06,388 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:44:06,388 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:44:06,388 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:44:06,388 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:44:22,366 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:44:22,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:44:22,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 11:44:22,376 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:44:22,376 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 11:44:22,376 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 11:44:22,376 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:34:49,002 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:34:49,013 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:34:49,013 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:35:34,493 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:35:34,493 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:35:34,494 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:35:34,494 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:47:22,938 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:47:22,945 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:47:22,945 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:47:42,221 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:47:42,221 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:47:42,223 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:47:42,223 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:50:26,354 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:50:26,362 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:50:26,362 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:50:26,375 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:50:26,375 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:50:26,375 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:50:26,375 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:55:45,671 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:55:45,679 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:55:45,679 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 13:58:08,665 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:58:08,665 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 13:58:08,666 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 13:58:08,666 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:00:36,637 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:00:36,641 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:00:36,641 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:00:36,647 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:00:36,647 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:00:36,647 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:00:36,647 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:01,683 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:01,687 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:01,687 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:01,693 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:01,693 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:01,694 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:01,694 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:19,357 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,359 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,359 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,361 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,361 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,361 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,363 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,363 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,363 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,363 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,367 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,367 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,367 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,367 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,367 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,369 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,371 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,374 - INFO: Bioagents - BMEGA has started and is ready.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA received request with task: FIND-DRUGS-FOR-MUTATION-DATASET
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:19,381 - INFO: Bioagents - BMEGA will perform task FIND-DRUGS-FOR-MUTATION-DATASET with method respond_find_drugs_for_mutation_dataset.
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,943 - INFO: Bioagents - BMEGA received request with task: FIND-MUTATION-FREQUENCY
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:47,945 - INFO: Bioagents - BMEGA will perform task FIND-MUTATION-FREQUENCY with method respond_find_mutation_frequency.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA received request with task: FIND-VARIANTS-FOR-GENES
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.
+2018-11-30 14:01:52,193 - INFO: Bioagents - BMEGA will perform task FIND-VARIANTS-FOR-GENES with method respond_find_variants_for_genes.

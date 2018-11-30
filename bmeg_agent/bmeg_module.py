@@ -14,7 +14,7 @@ logger = logging.getLogger('BMEGA')
 
 class BMEGModule(Bioagent):
     name = 'BMEGA'
-    tasks = ['FIND-GENE-MUTATION-DATASET','FIND-MUTATION-FREQUENCY', 'FIND-COMMON-PHENOTYPES-FOR-GENES', 'FIND-DRUGS-FOR-MUTATION-DATASET' ]
+    tasks = ['FIND-GENE-MUTATION-DATASET','FIND-MUTATION-FREQUENCY', 'FIND-COMMON-PHENOTYPES-FOR-GENES', 'FIND-DRUGS-FOR-MUTATION-DATASET', 'FIND-VARIANTS-FOR-GENES', 'SHOW-MUTATION-DATA']
 
     def __init__(self, **kwargs):
         self.BA = BMEGAgent()
@@ -22,6 +22,54 @@ class BMEGModule(Bioagent):
         super(BMEGModule, self).__init__(**kwargs)
 
 
+    def send_display_oncoprint(self, oncoprint_data):
+        content = KQMLList('display-oncoprint')
+
+        content.sets('data', str(oncoprint_data))
+
+        self.tell(content)
+
+    def respond_show_mutation_data(self, content):
+        """Response content to show-mutation-data request"""
+        gene_arg = content.gets('GENE')
+
+        if not gene_arg:
+            self.make_failure('MISSING_MECHANISM')
+
+        gene_names = _get_term_names(gene_arg)
+        if not gene_names:
+            return self.make_failure('MISSING_MECHANISM')
+        gene_name = gene_names[0]
+
+        disease_arg = content.gets('DISEASE')
+        if not disease_arg:
+            return self.make_failure('MISSING_MECHANISM')
+
+        disease_names = _get_term_names(disease_arg)
+        if not disease_names:
+            return self.make_failure('INVALID_DISEASE')
+
+        disease_name = disease_names[0].replace("-", " ").lower()
+        disease_abbr = self.BA.get_tcga_abbr(disease_name)
+        if disease_abbr is None:
+            return self.make_failure('INVALID_DISEASE')
+
+
+        gene_list = []
+        for gene_name in gene_names:
+            gene_list.append(str(gene_name))
+
+        oncoprint_data = self.BA.find_variants_for_genes_cbio(gene_list, disease_abbr, "tcga")
+
+        self.send_display_oncoprint(oncoprint_data)
+
+        reply = KQMLList('SUCCESS')
+
+        reply.sets('oncoprint', 'SUCCESS' if len(oncoprint_data)>0 else 'FAILURE')
+
+
+
+        return reply
 
     def respond_find_mutation_frequency(self, content):
         """Response content to find-mutation-frequency request"""
@@ -56,7 +104,57 @@ class BMEGModule(Bioagent):
         reply = KQMLList('SUCCESS')
         reply.sets('mutfreq', result)
 
+        gene_list = []
+        for gene_name in gene_names:
+            gene_list.append(str(gene_name))
+
+        oncoprint_data = self.BA.find_variants_for_genes_cbio(gene_list, disease_abbr, "tcga")
+
+        self.send_display_oncoprint(oncoprint_data)
+
+
         return reply
+
+    def respond_find_variants_for_genes(self, content):
+        """Response content to find-variants-for-genes"""
+        gene_arg = content.gets('GENES')
+
+        if not gene_arg:
+            self.make_failure('MISSING_MECHANISM')
+
+        gene_names = _get_term_names(gene_arg)
+        if not gene_names:
+            return self.make_failure('MISSING_MECHANISM')
+
+        gene_list = []
+        for gene_name in gene_names:
+            gene_list.append(str(gene_name))
+
+        disease_arg = content.gets('DISEASE')
+        if not disease_arg:
+            return self.make_failure('MISSING_MECHANISM')
+
+        disease_names = _get_term_names(disease_arg)
+        if not disease_names:
+            return self.make_failure('INVALID_DISEASE')
+
+        disease_name = disease_names[0].replace("-", " ").lower()
+        disease_abbr = self.BA.get_tcga_abbr(disease_name)
+
+        if disease_abbr is None:
+            return self.make_failure('INVALID_DISEASE')
+
+        result = self.BA.find_variants_for_genes_cbio(gene_list, disease_abbr, "tcga")
+
+        if not result:
+            return self.make_failure('MISSING_MECHANISM')
+
+        reply = KQMLList('SUCCESS')
+        reply.sets('variants', str(result))
+
+        return reply
+
+
 
     def respond_find_drugs_for_mutation_dataset(self, content):
         genes_arg = content.gets('GENES')

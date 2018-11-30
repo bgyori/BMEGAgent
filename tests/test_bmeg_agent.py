@@ -44,7 +44,6 @@ class TestDrugMutationDataset(_IntegrationTest):
         content = KQMLList('FIND-DRUGS-FOR-MUTATION-DATASET')
         genes = ekb_from_text('TP53')
         content.sets('genes', str(genes))
-
         content.sets('dataset', "ccle")
 
         msg = get_request(content)
@@ -53,12 +52,30 @@ class TestDrugMutationDataset(_IntegrationTest):
     def check_response_to_message_1(self, output):
         assert output.head() == 'SUCCESS', output
 
-        # test_res = KQMLList.from_string('((:score 0.0 :group (TP53 CDH1)) '
-        #                                 '(:score 0.0 :group (CDH1 TP53)) '
-        #                                 '(:score 0.0 :group (GATA3 TP53 CDH1)) '
-        #                                 '(:score 0.0 :group (CTCF TP53 CDH1 GATA3)))')
-        #
-        drugs = output.gets('drugs')
-
+        drugs = output.get('drugs')
 
         assert  'PLX-4720' in drugs
+
+class TestVariantsCbioportal(_IntegrationTest):
+    def __init__(self, *args):
+        super(TestVariantsCbioportal, self).__init__(BMEGModule)
+
+    def create_message_1(self):
+        content = KQMLList('FIND-VARIANTS-FOR-GENES')
+        genes = ekb_from_text('EGFR and PTEN')
+        content.sets('genes', str(genes))
+
+        disease = ekb_from_text('glioblastoma')
+        content.sets('disease', disease)
+        content.sets('dataset', "tcga")
+
+        msg = get_request(content)
+        return msg, content
+
+    def check_response_to_message_1(self, output):
+        assert output.head() == 'SUCCESS', output
+
+        variants = output.gets('variants')
+
+        assert 'missense' in variants
+

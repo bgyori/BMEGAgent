@@ -6,6 +6,9 @@ import itertools
 from scipy import stats
 import pandas
 
+# for cbio portal
+import http.client, urllib.parse
+
 
 disease_names = {
 'ADRENOCORTICAL CARCINOMA':	'ACC',
@@ -78,6 +81,8 @@ disease_names = {
 'UVEAL MELANOMA':	'UVM',
 }
 
+
+
 class BMEGAgent:
     def __init__(self):
         print("Connected to bmeg")
@@ -112,8 +117,11 @@ class BMEGAgent:
 
         freq = (float(len(mut_samples)) / float(len(all_samples))) * 100
 
+        # Also send the oncoprint data
+
+
         return freq
-        # return 2
+
 
 
     def find_common_phenotypes_for_genes(self, genes):
@@ -148,7 +156,7 @@ class BMEGAgent:
         return list(intSet)
 
 
-
+    #
     # def find_mutations_on_gene(self, gene):
     #     """
     #     Returns the the mutations on a gene
@@ -181,7 +189,10 @@ class BMEGAgent:
     #     # return list(intSet)
 
 
+
+
     def find_drugs_for_mutation_dataset(self, genes, dataset):
+
 
         q = O.query().V().where(gripql.eq("_label", "Biosample"))
         q = q.where(gripql.and_(gripql.eq("source", dataset))).render({"id": "_gid"})
@@ -264,19 +275,171 @@ class BMEGAgent:
                             # row["t-statistic"] = s.statistic
                             # row["t-pvalue"] = s.pvalue
                             # out.append(row)
-
-
-
         # print(out)
         return out
-        # pd = pandas.DataFrame(out, columns=["drug id", "drug name", "mutation", "t-statistic", "t-pvalue"])
+
+    def find_variants_for_genes(self, genes, dataset):
+
+        # q2 = O.query().V().where(gripql.eq("_label", "Callset")).limit(10).in_("AlleleCall").mark("a").outEdge(
+        #     "AlleleIn").mark("b").select(["a", "b"])
+        #
+        # for row in q2:
+        #     print(row.a.data.annotations.myvariantinfo)
+
+        return;
+        gene_ids = {}
+        for g in genes:
+            for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", g)):
+                gene_ids[g] = i.gid
+
+        # Scan <dataset>  based on mutation status
+        mut_samples = {}
+        for g, g_id in gene_ids.items():
+            #
+            q_variant = O.query().V(g_id).in_("variantIn")
+
+            for row in q_variant:
+                alternateBases = row.data.alternateBases
+                referenceBases = row.data.referenceBases
+                alteration_type = self.compute_alteration_type(referenceBases, alternateBases)
+                # print(alternateBases)
+                # print(referenceBases)
+                # print(row)
 
 
-        # print(pd)
-        # return pd
+            q_patients =  q_variant.out("variantCall").out("callSetOf").where(gripql.eq("source", dataset))
 
+
+
+
+
+        # #
+        #     for row in q_patients:
+        #         print(row.gid)
+
+
+
+
+        # Get patients
+
+
+            # q2 = O.query().V(g_id).in_("variantIn").out("variantCall").out("callSetOf").in_("cnaCallSetOf").in_("segmentOf")
+            # for row in q2:
+            #     print(row)
+            #     mut_samples[g].append(row)
+
+
+    # FIXME: this is temporary
+    def compute_alteration_type(self, referenceBases, alternateBases):
+        """
+        Computes the alteration type based on before/after bases
+        """
+        print(referenceBases + " " + alternateBases)
+
+        type = ""
+        if alternateBases == '-':
+            type = "trunc"
+        elif referenceBases == '-':
+            type = "inframe"
+        else:
+            type = "missense"
+
+        return type
+
+
+    def find_variants_for_genes_cbio(self, genes, disease, dataset= "tcga"):
+        """
+
+        :param genes:
+        :param disease: TCGA abbreviation of the study
+        :param dataset:
+        :return:
+        """
+
+        disease = disease.lower()
+        headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
+
+        gene_list = ' '.join(genes)
+
+        genetic_profile_id = disease + "_" + dataset + "_mutations"
+        params = urllib.parse.urlencode({'cmd': 'getMutationData', 'gene_list': gene_list, 'genetic_profile_id': genetic_profile_id})
+
+
+        conn = http.client.HTTPConnection("www.cbioportal.org")
+
+        conn.request("POST", "/webservice.do?", params, headers)
+
+        r2 = conn.getresponse()
+
+        if r2.status != 200:
+            return -1
+
+        data = r2.read().decode("utf-8")
+        conn.close()
+
+        return format_cbio_output(data)
+
+
+def format_cbio_output( data):
+    """
+
+    :param data: Is tab separated
+    :return:
+    """
+    # print(data)
+
+
+    out_dict = dict()
+
+    lines = data.split("\n")
+
+    for line in lines[2:]:
+        words = line.split("\t")
+        if len(words) < 6:
+            continue
+        gene = words[1]
+        data = {'sample':'', 'disp_mut':''}
+        data['sample'] = words[2]
+        data['disp_mut'] = map_to_oncoprint_mutation(words[5])
+
+        if gene in out_dict:
+            out_dict[gene]['data'].append(data)
+        else:
+            out_dict[gene] = {}
+            out_dict[gene]['data'] = []
+            out_dict[gene]['gene'] = gene
+            out_dict[gene]['desc'] = "Annotation for "+ gene
+            
+
+    out = []
+    for gene in out_dict:
+        out.append(out_dict[gene])
+    
+    return out
+
+def map_to_oncoprint_mutation(cbio_mut):
+    cbio_mut = cbio_mut.lower()
+
+    oncoprint_mut = '*'
+    if 'missense' in cbio_mut:
+        oncoprint_mut = 'missense'
+    elif 'inframe' in cbio_mut:
+        oncoprint_mut = 'inframe'
+    elif 'promote' in cbio_mut:
+        oncoprint_mut = 'promoter'
+    elif 'frame_shift' in cbio_mut:
+        oncoprint_mut = 'trunc'
+    elif 'nonsense' in cbio_mut:
+        oncoprint_mut = 'trunc'
+    elif 'splice' in cbio_mut:
+        oncoprint_mut = 'trunc'
+
+    return oncoprint_mut
 
 # ba = BMEGAgent()
+# ba.find_variants_for_genes(['BRAF'],'tcga')
+# ba.find_variants_for_genes_cbio(['EGFR', 'PTEN'],'glioblastoma','tcga')
+
 # ba.find_mutations_on_gene("BRAF")
 # ba.find_common_phenotypes_for_genes(["BRAF", 'AKT1'])
 # ba.find_drugs_for_gene_mutation_dataset(["CDKN2A", "PTEN", "TP53",], "ccle")
