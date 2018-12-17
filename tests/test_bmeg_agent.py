@@ -11,11 +11,6 @@ import time
 ba = BMEGAgent()
 
 
-class TestBMEGAgent(_IntegrationTest):
-    def __init__(self, *args):
-        super(TestBMEGAgent, self).__init__(BMEGModule)
-
-
 class TestMutFreq(_IntegrationTest):
     def __init__(self, *args):
         super(TestMutFreq, self).__init__(BMEGModule)
