@@ -33,6 +33,7 @@ class BMEGModule(Bioagent):
         """Response content to show-mutation-data request"""
         gene_arg = content.gets('GENE')
 
+
         if not gene_arg:
             self.make_failure('MISSING_MECHANISM')
 
@@ -65,7 +66,7 @@ class BMEGModule(Bioagent):
 
         reply = KQMLList('SUCCESS')
 
-        reply.sets('oncoprint', 'SUCCESS' if len(oncoprint_data)>0 else 'FAILURE')
+        reply.sets('oncoprint', 'SUCCESS' if len(oncoprint_data) > 0 else 'FAILURE')
 
 
 

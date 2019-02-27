@@ -74,3 +74,24 @@ class TestVariantsCbioportal(_IntegrationTest):
 
         assert 'missense' in variants
 
+    # def create_message_2(self):
+    #     content = KQMLList('FIND-VARIANTS-FOR-GENES')
+    #     genes = ekb_from_text('CCNE1')
+    #     content.sets('genes', str(genes))
+    #
+    #     disease = ekb_from_text('ovarian cancer')
+    #     content.sets('disease', disease)
+    #     content.sets('dataset', "tcga")
+    #
+    #
+    #     msg = get_request(content)
+    #     return msg, content
+    #
+    # def check_response_to_message_2(self, output):
+    #     assert output.head() == 'SUCCESS', output
+    #
+    #     variants = output.gets('variants')
+    #
+    #     assert 'amplification' in variants
+
+

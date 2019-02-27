@@ -282,32 +282,35 @@ class BMEGAgent:
 
         # q2 = O.query().V().where(gripql.eq("_label", "Callset")).limit(10).in_("AlleleCall").mark("a").outEdge(
         #     "AlleleIn").mark("b").select(["a", "b"])
-        #
+        # #
         # for row in q2:
-        #     print(row.a.data.annotations.myvariantinfo)
+        #     print(row)
 
-        return;
+        # return
         gene_ids = {}
         for g in genes:
             for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", g)):
                 gene_ids[g] = i.gid
-
-        # Scan <dataset>  based on mutation status
+        #
+        # # Scan <dataset>  based on mutation status
         mut_samples = {}
         for g, g_id in gene_ids.items():
-            #
-            q_variant = O.query().V(g_id).in_("variantIn")
-
-            for row in q_variant:
-                alternateBases = row.data.alternateBases
-                referenceBases = row.data.referenceBases
-                alteration_type = self.compute_alteration_type(referenceBases, alternateBases)
-                # print(alternateBases)
-                # print(referenceBases)
-                # print(row)
-
-
-            q_patients =  q_variant.out("variantCall").out("callSetOf").where(gripql.eq("source", dataset))
+            print(g)
+            print(g_id)
+        #     #
+        #     q_variant = O.query().V(g_id).in_("variantIn")
+            q_allele = O.query().V(g_id).in_("variantIn")
+        #
+            for row in q_allele:
+                # alternateBases = row.data.alternateBases
+        #         referenceBases = row.data.referenceBases
+        #         alteration_type = self.compute_alteration_type(referenceBases, alternateBases)
+        #         # print(alternateBases)
+        #         # print(referenceBases)
+                print(row)
+        #
+        #
+        #     q_patients =  q_variant.out("variantCall").out("callSetOf").where(gripql.eq("source", dataset))
 
 
 
@@ -359,7 +362,7 @@ class BMEGAgent:
         disease = disease.lower()
         headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
 
-        gene_list = ' '.join(genes)
+        gene_list = ','.join(genes)
 
         genetic_profile_id = disease + "_" + dataset + "_mutations"
         params = urllib.parse.urlencode({'cmd': 'getMutationData', 'gene_list': gene_list, 'genetic_profile_id': genetic_profile_id})
@@ -369,18 +372,98 @@ class BMEGAgent:
 
         conn.request("POST", "/webservice.do?", params, headers)
 
+
+
         r2 = conn.getresponse()
+
+
 
         if r2.status != 200:
             return -1
 
         data = r2.read().decode("utf-8")
+
+
+
+        # Now get CNA data
+
+        case_set_id = disease + "_tcga_all"
+        genetic_profile_id =  disease + "_" + dataset + "_gistic"
+        params = urllib.parse.urlencode(
+            {'cmd': 'getProfileData', 'gene_list': gene_list, 'genetic_profile_id': genetic_profile_id,
+             'case_set_id': case_set_id})
+
+        conn.request("POST", "/webservice.do?", params, headers)
+
+        r2 = conn.getresponse()
+
+        if r2.status != 200:
+            return format_cbio_mutation_output(data)
+
+
+        data2 = r2.read().decode("utf-8")
+
         conn.close()
 
-        return format_cbio_output(data)
+        out_dict = dict()
+
+        format_cbio_mutation_output(data, out_dict)
+
+        # uses old out_dict to append new data
+        out = format_cbio_cna_output(data2, out_dict)
 
 
-def format_cbio_output( data):
+
+        return out
+
+
+def format_cbio_cna_output(data, out_dict):
+    """
+
+        :param data: Is tab separated
+        :return:
+        """
+
+
+    lines = data.split("\n")
+
+    samples = lines[2].split("\t")[2:]
+
+    for line in lines[3:]:
+
+        words = line.split("\t")
+
+        if len(words) < 2:
+            continue
+
+        gene = words[1]
+
+        for i, s in enumerate(samples):
+            data = {}
+            data['sample'] = s
+
+            data['disp_cna'] = map_to_oncoprint_cna(words[i+2])
+
+
+            if gene in out_dict:
+                out_dict[gene]['data'].append(data)
+            else:
+                out_dict[gene] = {}
+                out_dict[gene]['data'] = [data]
+                out_dict[gene]['gene'] = gene
+                out_dict[gene]['desc'] = "Annotation for " + gene
+
+
+    out = []
+    for gene in out_dict:
+        out.append(out_dict[gene])
+
+
+
+    return out
+
+
+def format_cbio_mutation_output( data ,out_dict):
     """
 
     :param data: Is tab separated
@@ -389,7 +472,6 @@ def format_cbio_output( data):
     # print(data)
 
 
-    out_dict = dict()
 
     lines = data.split("\n")
 
@@ -400,22 +482,44 @@ def format_cbio_output( data):
         gene = words[1]
         data = {'sample':'', 'disp_mut':''}
         data['sample'] = words[2]
+
         data['disp_mut'] = map_to_oncoprint_mutation(words[5])
 
         if gene in out_dict:
             out_dict[gene]['data'].append(data)
         else:
             out_dict[gene] = {}
-            out_dict[gene]['data'] = []
+            out_dict[gene]['data'] = [data]
             out_dict[gene]['gene'] = gene
-            out_dict[gene]['desc'] = "Annotation for "+ gene
-            
+            out_dict[gene]['desc'] = "Annotation for " + gene
 
     out = []
     for gene in out_dict:
         out.append(out_dict[gene])
-    
+
+
     return out
+
+
+def map_to_oncoprint_cna(ind_str):
+    if ind_str.lower() == 'nan':
+        return '*'
+    ind = int(ind_str)
+
+    cna_type = '*'
+    if ind == -2:
+        cna_type = "homdel"
+    elif ind == -1:
+        cna_type = "hetloss"
+    elif ind == 0:
+        cna_type = "diploid"
+    elif ind == 1:
+        cna_type = "gain"
+    elif ind == 2:
+        cna_type = "amp"
+
+    return cna_type
+
 
 def map_to_oncoprint_mutation(cbio_mut):
     cbio_mut = cbio_mut.lower()
@@ -433,14 +537,23 @@ def map_to_oncoprint_mutation(cbio_mut):
         oncoprint_mut = 'trunc'
     elif 'splice' in cbio_mut:
         oncoprint_mut = 'trunc'
+    elif 'amp' in cbio_mut:
+        oncoprint_mut = 'amp'
 
     return oncoprint_mut
 
 # ba = BMEGAgent()
-# ba.find_variants_for_genes(['BRAF'],'tcga')
+
+
+# print(ba.find_variants_for_genes_cbio(['PTEN'],'BRCA','tcga'))
+# print(ba.find_variants_for_genes_cbio(['BRAF'],'OV','tcga'))
 # ba.find_variants_for_genes_cbio(['EGFR', 'PTEN'],'glioblastoma','tcga')
+# ba.find_variants_for_genes_cbio(['BRCA1, CCNE1'],'OV','tcga')
 
 # ba.find_mutations_on_gene("BRAF")
 # ba.find_common_phenotypes_for_genes(["BRAF", 'AKT1'])
-# ba.find_drugs_for_gene_mutation_dataset(["CDKN2A", "PTEN", "TP53",], "ccle")
+# ba.find_drugs_for_mutation_dataset(["CDKN2A", "PTEN", "TP53",], "ccle")
 # ba.find_drugs_for_gene_mutation_dataset(["CDKN2A", "PTEN", "TP53", "SMAD4"], "ccle")
+
+# for bme
+# ba.find_variants_for_genes(['BRAF'],'tcga')
