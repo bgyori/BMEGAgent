@@ -1,14 +1,14 @@
 import re
 import gripql
-conn = gripql.Connection('http://bmeg.io')
-O = conn.graph("bmeg")
+
 import itertools
 from scipy import stats
-import pandas
 
+import os
 # for cbio portal
 import http.client, urllib.parse
 
+credentials_dir = os.path.dirname(os.path.realpath(__file__)) + '/../credentials/'
 
 disease_names = {
 'ADRENOCORTICAL CARCINOMA':	'ACC',
@@ -83,8 +83,12 @@ disease_names = {
 
 
 
+
+
 class BMEGAgent:
     def __init__(self):
+        conn = gripql.Connection('https://bmeg.io/api', credential_file= credentials_dir+ "bmeg_credentials.json")
+        self.O = conn.graph("bmeg_rc1_2")
         print("Connected to bmeg")
 
     def get_tcga_abbr(self, long_name):
@@ -92,262 +96,132 @@ class BMEGAgent:
 
     def find_mutation_frequency(self, gene, disease):
 
-        #
-        q = O.query().V().where(gripql.eq("_label", "Biosample"))
+        # find gene id
 
-        q = q.where(gripql.and_(gripql.eq("source", "tcga"), gripql.eq("disease_code", disease))).render({"id": "_gid"})
-        all_samples = []
-        for row in q:
-            all_samples.append(row.id)
 
-        if len(all_samples) == 0:
-            return 0
-        gene_id = 0
-        for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", gene)):
+        for i in self.O.query().V().hasLabel("Gene").has(gripql.eq("symbol", gene)):
             gene_id = i.gid
 
+        # Find all the tumor aliquots in tcga for the disease
+        proj_id = "Project:TCGA-" + disease
+        q = self.O.query().V(proj_id).in_("InProject").in_("SampleFor").in_("AliquotFor").has(
+            gripql.eq("gdc_attributes.sample_type", "Primary Tumor")).as_("sample").in_("CallsetFor").select("sample")
+        all_aliquots = []
+        for row in q:
+            all_aliquots.append(row.gid)
+        if len(all_aliquots) == 0:
+            return 0
+
+
+
+        q = self.O.query().V(all_aliquots).as_("sample").in_("CallsetFor").outE("AlleleCall")
+        q = q.has(gripql.eq("ensembl_gene", gene_id)).as_("variant")
+        q = q.distinct("_from")
+
         mut_samples = []
-
-        # get TCGA samples with mutation
-
-        for i in O.query().V(gene_id).in_("variantIn").out("variantCall").out("callSetOf").where(
-                gripql.in_("_gid", all_samples)).render({"gid": "_gid"}):
+        for i in q:
             mut_samples.append(i.gid)
-        #
 
-        freq = (float(len(mut_samples)) / float(len(all_samples))) * 100
+        freq = (float(len(mut_samples)) / float(len(all_aliquots))) #* 100
 
-        # Also send the oncoprint data
-
-
+        # print (freq)
         return freq
-
-
-
-    def find_common_phenotypes_for_genes(self, genes):
-        """
-        Looks at the mutations on these genes and finds common phenotypes for the mutations
-        :param genes: Gene names as a list
-        :return:
-        """
-
-        gene_ids = {}
-        for g in genes:
-            for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", g)):
-                gene_ids[g] = i.gid
-
-
-        phenotypes = []
-        ind = 0
-        for g, i in gene_ids.items():
-            q = O.query().V(i).in_("variantIn").in_("featureOf").out("phenotypeOf")
-
-            phenotypes.append([])
-
-            for k in q:
-                if k['data']['description'] not in phenotypes[ind]:
-                    phenotypes[ind].append(k['data']['description'])
-            ind +=1
-
-        intSet = set(phenotypes[0])
-        for i in range(1, len(phenotypes)): #get intersection of two sets
-           intSet = intSet & set(phenotypes[i])
-
-        return list(intSet)
-
-
-    #
-    # def find_mutations_on_gene(self, gene):
-    #     """
-    #     Returns the the mutations on a gene
-    #     :param genes: Gene names as a list
-    #     :return:
-    #     """
-    #
-    #     gene_id = 0
-    #     for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", gene)):
-    #         gene_id = i.gid
-    #
-    #     #
-    #     q = O.query().V(gene_id).in_("variantIn").in_("featureOf").out("environmentFor")
-    #     for k in q: #k['data']['description'] in q:
-    #         print(k)
-    #
-    #
-    #     #
-    #     #     phenotypes.append([])
-    #     #
-    #     #     for k in q:
-    #     #         if k['data']['description'] not in phenotypes[ind]:
-    #     #             phenotypes[ind].append(k['data']['description'])
-    #     #     ind +=1
-    #     #
-    #     # intSet = set(phenotypes[0])
-    #     # for i in range(1, len(phenotypes)): #get intersection of two sets
-    #     #    intSet = intSet & set(phenotypes[i])
-    #     #
-    #     # return list(intSet)
-
 
 
 
     def find_drugs_for_mutation_dataset(self, genes, dataset):
 
+        program = "Program:" + dataset
 
-        q = O.query().V().where(gripql.eq("_label", "Biosample"))
-        q = q.where(gripql.and_(gripql.eq("source", dataset))).render({"id": "_gid"})
-        all_samples = []
+        q = self.O.query().V(program).in_("InProgram").in_("InProject").in_("SampleFor").in_("AliquotFor").distinct(
+            "_gid")
+        all_aliquots = []
         for row in q:
-            all_samples.append(row.id)
+            all_aliquots.append(row.gid)
 
         # GENES = ["CDKN2A", "PTEN", "TP53", "SMAD4"]
         gene_ids = {}
         for g in genes:
-            for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", g)):
+            for i in self.O.query().V().hasLabel("Gene").has(gripql.eq("symbol", g)):
                 gene_ids[g] = i.gid
 
 
         #Scan <dataset> cell lines based on mutation status
         mut_samples = {}
         norm_samples = {}
-        for g, i in gene_ids.items():
-            # get CCLE samples with mutation
-            mut_samples[g] = set(k['gid'] for k in
-                                 O.query().V(i).in_("variantIn").out("variantCall").out("callSetOf").where(
-                                     gripql.in_("_gid", all_samples)).render({"gid": "_gid"}))
 
-            # get CCLE samples without mutation
-            norm_samples[g] = list(set(all_samples).difference(mut_samples[g]))
+        q = self.O.query().V(all_aliquots).as_("sample").in_("CallsetFor").outE("AlleleCall")
+        q = q.has(gripql.within("ensembl_gene", list(gene_ids.values()))).as_("variant")
+        q = q.render({"sample": "$sample._gid", "gene": "$variant._data.ensembl_gene"})
 
-            print("%s Positive Set: %d" % (g, len(mut_samples[g])))
-            print("%s Negative Set: %d" % (g, len(norm_samples[g])))
+        for res in q:
+            mut_samples[res.gene] = mut_samples.get(res.gene, set()) | set([res.sample])
+
+        # get dataset samples without mutation
+        for i in gene_ids.values():
+            norm_samples[i] = list(set(all_aliquots).difference(mut_samples[i]))
+
+            print("%s Positive Set: %d" % (i, len(mut_samples[i])))
+            print("%s Negative Set: %d" % (i, len(norm_samples[i])))
 
 
         # Get response values for the positive set (samples with mutation) and collect AUC value by drug
         pos_response = {}
         compound = {}
-        for g in genes:
+        for g in gene_ids.values():
             pos_response[g] = {}
+            q = self.O.query().V(list(mut_samples[g])).in_("ResponseIn").has(gripql.eq("source", dataset)).as_("a").out(
+                "ResponseTo").as_("b").select(["a", "b"])
+            for row in q:
+                v = row['a']['data']['amax']
 
-            for row in O.query().V(list(mut_samples[g])).in_("responseFor").mark("a").out("responseTo").mark("b").select(["a", "b"]):
+                id = row['b']['gid']
+                compound[id] = row['b']['data']['name']
 
-                for v in row['a']['data']['summary']:
-                    if v['type'] == "AMAX":
-                        id = row['b']['gid']
-                        compound[id] = row['b']['data']['name']
-
-                        if id not in pos_response[g]:
-                            pos_response[g][id] = [ v["value"] ]
-                        else:
-                            pos_response[g][id].append(v["value"])
+                if id not in pos_response[g]:
+                    pos_response[g][id] = [v]
+                else:
+                    pos_response[g][id].append(v)
 
 
         #Get response values for the negative set (samples without mutation) and collect AUC value by drug
         neg_response = {}
-        for g in genes:
+        for g in gene_ids.values():
             neg_response[g] = {}
-            for row in O.query().V(norm_samples[g]).in_("responseFor").mark("a").out("responseTo").mark("b").select(
-                    ["a", "b"]):
-                for v in row['a']['data']['summary']:
-                    if v['type'] == "AMAX":
-                        id = row['b']['gid']
-                        compound[id] = row['b']['data']['name']
+            q = self.O.query().V(list(norm_samples[g])).in_("ResponseIn").has(gripql.eq("source", dataset)).as_("a").out(
+                "ResponseTo").as_("b").select(["a", "b"])
+            for row in q:
+                v = row['a']['data']['amax']
 
-                        if id not in neg_response[g]:
-                            neg_response[g][id] = [v["value"]]
-                        else:
-                            neg_response[g][id].append(v["value"])
+                id = row['b']['gid']
+                compound[id] = row['b']['data']['name']
+
+
+                if id not in neg_response[g]:
+                    neg_response[g][id] = [v]
+                else:
+                    neg_response[g][id].append(v)
 
         #Collect t-test statistics
         drugs = set(itertools.chain.from_iterable(i.keys() for i in pos_response.values()))
         out = []
         for drug in drugs:
-            for g in genes:
+            for g in gene_ids.values():
                 if drug in pos_response[g] and drug in neg_response[g]:
-                    # row = {"drugId": drug, "drugName": compound[drug], "gene": g}
+                    row = {"drug": drug, "mutation": g}
 
                     mut_values = pos_response[g][drug]
                     norm_values = neg_response[g][drug]
                     if len(mut_values) > 5 and len(norm_values) > 5:
                         s = stats.ttest_ind(mut_values, norm_values, equal_var=False)
-                        if s.pvalue <= 0.05 and s.statistic > 0: # means drug is significantly effective
+                        if s.pvalue <= 0.05 and s.statistic > 0:  # means drug is significantly effective
                             out.append(compound[drug])
-                            # row["t-statistic"] = s.statistic
-                            # row["t-pvalue"] = s.pvalue
-                            # out.append(row)
-        # print(out)
+
+        print(out)
+
+        # get names of compounds
         return out
 
-    def find_variants_for_genes(self, genes, dataset):
-
-        # q2 = O.query().V().where(gripql.eq("_label", "Callset")).limit(10).in_("AlleleCall").mark("a").outEdge(
-        #     "AlleleIn").mark("b").select(["a", "b"])
-        # #
-        # for row in q2:
-        #     print(row)
-
-        # return
-        gene_ids = {}
-        for g in genes:
-            for i in O.query().V().where(gripql.eq("_label", "Gene")).where(gripql.eq("symbol", g)):
-                gene_ids[g] = i.gid
-        #
-        # # Scan <dataset>  based on mutation status
-        mut_samples = {}
-        for g, g_id in gene_ids.items():
-            print(g)
-            print(g_id)
-        #     #
-        #     q_variant = O.query().V(g_id).in_("variantIn")
-            q_allele = O.query().V(g_id).in_("variantIn")
-        #
-            for row in q_allele:
-                # alternateBases = row.data.alternateBases
-        #         referenceBases = row.data.referenceBases
-        #         alteration_type = self.compute_alteration_type(referenceBases, alternateBases)
-        #         # print(alternateBases)
-        #         # print(referenceBases)
-                print(row)
-        #
-        #
-        #     q_patients =  q_variant.out("variantCall").out("callSetOf").where(gripql.eq("source", dataset))
-
-
-
-
-
-        # #
-        #     for row in q_patients:
-        #         print(row.gid)
-
-
-
-
-        # Get patients
-
-
-            # q2 = O.query().V(g_id).in_("variantIn").out("variantCall").out("callSetOf").in_("cnaCallSetOf").in_("segmentOf")
-            # for row in q2:
-            #     print(row)
-            #     mut_samples[g].append(row)
-
-
-    # FIXME: this is temporary
-    def compute_alteration_type(self, referenceBases, alternateBases):
-        """
-        Computes the alteration type based on before/after bases
-        """
-        print(referenceBases + " " + alternateBases)
-
-        type = ""
-        if alternateBases == '-':
-            type = "trunc"
-        elif referenceBases == '-':
-            type = "inframe"
-        else:
-            type = "missense"
-
-        return type
 
 
     def find_variants_for_genes_cbio(self, genes, disease, dataset= "tcga"):
@@ -360,7 +234,7 @@ class BMEGAgent:
         """
 
         disease = disease.lower()
-        headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
+        headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
 
         gene_list = ','.join(genes)
 
@@ -415,6 +289,41 @@ class BMEGAgent:
 
 
         return out
+
+
+    def find_variants_for_genes_bmeg(self, genes, disease, dataset= "tcga"):
+
+        gene_ids = {}
+        for g in genes:
+            for i in self.O.query().V().hasLabel("Gene").has(gripql.eq("symbol", g)):
+                gene_ids[g] = i.gid
+
+
+
+            # Find all the tumor aliquots in tcga for the disease
+        proj_id = "Project:TCGA-" + disease
+        q = self.O.query().V(proj_id).in_("InProject").in_("SampleFor").in_("AliquotFor").has(
+            gripql.eq("gdc_attributes.sample_type", "Primary Tumor")).as_("sample").in_("CallsetFor").select("sample")
+        all_aliquots = []
+        for row in q:
+            all_aliquots.append(row.gid)
+        if len(all_aliquots) == 0:
+            return 0
+
+        q = self.O.query().V(all_aliquots).as_("sample").in_("CallsetFor").outV("AlleleCall")
+
+        #
+        # q = q.has(gripql.within("ensembl_gene", list(gene_ids.values()))).as_("variant")
+        #
+        # q = q.distinct("gid")
+
+        mutations = []
+        for i in q:
+            if hasattr(i['data'], 'effect'): # not all rows have 'effect' attribute
+                mutations.append(i.data.effect)
+
+
+        return mutations
 
 
 def format_cbio_cna_output(data, out_dict):
@@ -543,7 +452,7 @@ def map_to_oncoprint_mutation(cbio_mut):
     return oncoprint_mut
 
 # ba = BMEGAgent()
-
+# ba.find_mutation_frequency("TP53", "OV")
 
 # print(ba.find_variants_for_genes_cbio(['PTEN'],'BRCA','tcga'))
 # print(ba.find_variants_for_genes_cbio(['BRAF'],'OV','tcga'))
@@ -551,9 +460,10 @@ def map_to_oncoprint_mutation(cbio_mut):
 # ba.find_variants_for_genes_cbio(['BRCA1, CCNE1'],'OV','tcga')
 
 # ba.find_mutations_on_gene("BRAF")
-# ba.find_common_phenotypes_for_genes(["BRAF", 'AKT1'])
-# ba.find_drugs_for_mutation_dataset(["CDKN2A", "PTEN", "TP53",], "ccle")
-# ba.find_drugs_for_gene_mutation_dataset(["CDKN2A", "PTEN", "TP53", "SMAD4"], "ccle")
+# ba.find_drugs_for_mutation_dataset(["CDKN2A", "PTEN", "TP53",], "CTRP")
+# ba.find_drugs_for_mutation_dataset(["TP53"], "CCLE")
 
-# for bme
-# ba.find_variants_for_genes(['BRAF'],'tcga')
+
+# for bmeg
+
+# ba.find_variants_for_genes_bmeg(['TP53'],'OV','tcga')

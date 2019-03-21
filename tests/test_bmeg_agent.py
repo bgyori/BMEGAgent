@@ -6,7 +6,6 @@ from bmeg_agent.bmeg_agent import BMEGAgent
 from bmeg_agent.bmeg_module import BMEGModule
 from bioagents.tests.integration import _IntegrationTest
 from bioagents.tests.util import ekb_kstring_from_text, ekb_from_text, get_request
-import time
 
 ba = BMEGAgent()
 
@@ -28,7 +27,7 @@ class TestMutFreq(_IntegrationTest):
     def check_response_to_message_OV(self, output):
         assert output.head() == 'SUCCESS', output
         mut_freq = output.gets('mutfreq')
-        assert mut_freq.startswith('0.81')
+        assert mut_freq.startswith('0.9')
 
 
 class TestDrugMutationDataset(_IntegrationTest):
@@ -39,7 +38,7 @@ class TestDrugMutationDataset(_IntegrationTest):
         content = KQMLList('FIND-DRUGS-FOR-MUTATION-DATASET')
         genes = ekb_from_text('TP53')
         content.sets('genes', str(genes))
-        content.sets('dataset', "ccle")
+        content.sets('dataset', "CCLE")
 
         msg = get_request(content)
         return msg, content
@@ -49,7 +48,7 @@ class TestDrugMutationDataset(_IntegrationTest):
 
         drugs = output.get('drugs')
 
-        assert  'PLX-4720' in drugs
+        assert  'selumetinib' in drugs
 
 class TestVariantsCbioportal(_IntegrationTest):
     def __init__(self, *args):
