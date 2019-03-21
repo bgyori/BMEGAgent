@@ -33,12 +33,13 @@ class TestMutFreq(_IntegrationTest):
 class TestDrugMutationDataset(_IntegrationTest):
     def __init__(self, *args):
         super(TestDrugMutationDataset, self).__init__(BMEGModule)
+        self.timeout = 200
 
     def create_message_1(self):
         content = KQMLList('FIND-DRUGS-FOR-MUTATION-DATASET')
         genes = ekb_from_text('TP53')
         content.sets('genes', str(genes))
-        content.sets('dataset', "CCLE")
+        content.sets('dataset', "CTRP")
 
         msg = get_request(content)
         return msg, content

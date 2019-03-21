@@ -103,7 +103,7 @@ class BMEGAgent:
             gene_id = i.gid
 
         # Find all the tumor aliquots in tcga for the disease
-        proj_id = "Project:TCGA-" + disease
+        proj_id = "Project:TCGA-" + disease.upper()
         q = self.O.query().V(proj_id).in_("InProject").in_("SampleFor").in_("AliquotFor").has(
             gripql.eq("gdc_attributes.sample_type", "Primary Tumor")).as_("sample").in_("CallsetFor").select("sample")
         all_aliquots = []
@@ -131,7 +131,7 @@ class BMEGAgent:
 
     def find_drugs_for_mutation_dataset(self, genes, dataset):
 
-        program = "Program:" + dataset
+        program = "Program:" + dataset.upper()
 
         q = self.O.query().V(program).in_("InProgram").in_("InProject").in_("SampleFor").in_("AliquotFor").distinct(
             "_gid")
@@ -173,7 +173,10 @@ class BMEGAgent:
             q = self.O.query().V(list(mut_samples[g])).in_("ResponseIn").has(gripql.eq("source", dataset)).as_("a").out(
                 "ResponseTo").as_("b").select(["a", "b"])
             for row in q:
-                v = row['a']['data']['amax']
+                if hasattr(row['a']['data'], 'act_area'):  # not all rows have 'amax' attribute
+                    v = row['a']['data']['act_area']
+                else:
+                    v = 0
 
                 id = row['b']['gid']
                 compound[id] = row['b']['data']['name']
@@ -191,8 +194,10 @@ class BMEGAgent:
             q = self.O.query().V(list(norm_samples[g])).in_("ResponseIn").has(gripql.eq("source", dataset)).as_("a").out(
                 "ResponseTo").as_("b").select(["a", "b"])
             for row in q:
-                v = row['a']['data']['amax']
-
+                if hasattr(row['a']['data'], 'act_area'):  # not all rows have 'amax' attribute
+                    v = row['a']['data']['act_area']
+                else:
+                    v = 0
                 id = row['b']['gid']
                 compound[id] = row['b']['data']['name']
 
@@ -217,7 +222,7 @@ class BMEGAgent:
                         if s.pvalue <= 0.05 and s.statistic > 0:  # means drug is significantly effective
                             out.append(compound[drug])
 
-        print(out)
+        # print(out)
 
         # get names of compounds
         return out

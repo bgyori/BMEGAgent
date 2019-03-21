@@ -178,7 +178,7 @@ class BMEGModule(Bioagent):
         if not dataset_arg:
             dataset_arg = "CCLE"  # default cell line
 
-        result = self.BA.find_drugs_for_mutation_dataset(gene_list, dataset_arg.lower())
+        result = self.BA.find_drugs_for_mutation_dataset(gene_list, dataset_arg)
 
         if not result:
             return self.make_failure('NO_DRUGS_FOUND')
