@@ -5,9 +5,26 @@ from indra.statements import stmts_from_json
 from bmeg_agent.bmeg_agent import BMEGAgent
 from bmeg_agent.bmeg_module import BMEGModule
 from bioagents.tests.integration import _IntegrationTest
-from bioagents.tests.util import ekb_kstring_from_text, ekb_from_text, get_request
+from bioagents.tests.util import ekb_kstring_from_text, ekb_from_text, get_request, agent_clj_from_text
 
-ba = BMEGAgent()
+class TestShowMutData(_IntegrationTest):
+    def __init__(self, *args):
+        super(TestShowMutData, self).__init__(BMEGModule)
+
+    def create_message_1(self):
+        content = KQMLList('SHOW-MUTATION-DATA')
+        gene = agent_clj_from_text('TP53')
+        disease = agent_clj_from_text('Ovarian serous cystadenocarcinoma')
+        content.set('gene', gene)
+        content.set('disease', disease)
+
+        msg = get_request(content)
+        return msg, content
+
+    def check_response_to_message_1(self, output):
+        assert output.head() == 'SUCCESS', output
+        oncoprint = output.gets('oncoprint')
+        assert oncoprint == 'SUCCESS'
 
 
 class TestMutFreq(_IntegrationTest):
@@ -16,8 +33,8 @@ class TestMutFreq(_IntegrationTest):
 
     def create_message_OV(self):
         content = KQMLList('FIND-MUTATION-FREQUENCY')
-        gene = ekb_kstring_from_text('TP53')
-        disease = ekb_from_text('Ovarian serous cystadenocarcinoma')
+        gene = agent_clj_from_text('TP53')
+        disease = agent_clj_from_text('Ovarian serous cystadenocarcinoma')
         content.set('gene', gene)
         content.set('disease', disease)
 
@@ -37,9 +54,9 @@ class TestDrugMutationDataset(_IntegrationTest):
 
     def create_message_1(self):
         content = KQMLList('FIND-DRUGS-FOR-MUTATION-DATASET')
-        genes = ekb_from_text('TP53')
-        content.sets('genes', str(genes))
-        content.sets('dataset', "CTRP")
+        genes = agent_clj_from_text('TP53')
+        content.set('genes', genes)
+        content.set('dataset', "CTRP")
 
         msg = get_request(content)
         return msg, content
@@ -57,11 +74,11 @@ class TestVariantsCbioportal(_IntegrationTest):
 
     def create_message_1(self):
         content = KQMLList('FIND-VARIANTS-FOR-GENES')
-        genes = ekb_from_text('EGFR and PTEN')
-        content.sets('genes', str(genes))
+        genes = agent_clj_from_text('EGFR and PTEN')
+        content.set('genes', genes)
 
-        disease = ekb_from_text('glioblastoma')
-        content.sets('disease', disease)
+        disease = agent_clj_from_text('glioblastoma')
+        content.set('disease', disease)
         content.sets('dataset', "tcga")
 
         msg = get_request(content)

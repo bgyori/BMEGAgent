@@ -3,6 +3,7 @@ import os
 
 import logging
 from bioagents import Bioagent
+from indra.statements import Agent
 from .bmeg_agent import BMEGAgent
 from indra.sources.trips.processor import TripsProcessor
 from kqml import KQMLModule, KQMLPerformative, KQMLList, KQMLString, KQMLToken
@@ -31,36 +32,31 @@ class BMEGModule(Bioagent):
 
     def respond_show_mutation_data(self, content):
         """Response content to show-mutation-data request"""
-        gene_arg = content.gets('GENE')
+        gene_arg = content.get('GENE')
 
 
         if not gene_arg:
             self.make_failure('MISSING_MECHANISM')
 
-        gene_names = _get_term_names(gene_arg)
+        gene_names = _get_kqml_names(gene_arg)
         if not gene_names:
             return self.make_failure('MISSING_MECHANISM')
         gene_name = gene_names[0]
 
-        disease_arg = content.gets('DISEASE')
+        disease_arg = content.get('DISEASE')
         if not disease_arg:
             return self.make_failure('MISSING_MECHANISM')
 
-        disease_names = _get_term_names(disease_arg)
+        disease_names = _get_kqml_names(disease_arg)
         if not disease_names:
             return self.make_failure('INVALID_DISEASE')
 
-        disease_name = disease_names[0].replace("-", " ").lower()
+        disease_name = _sanitize_disase_name(disease_names[0])
         disease_abbr = self.BA.get_tcga_abbr(disease_name)
         if disease_abbr is None:
             return self.make_failure('INVALID_DISEASE')
 
-
-        gene_list = []
-        for gene_name in gene_names:
-            gene_list.append(str(gene_name))
-
-        oncoprint_data = self.BA.find_variants_for_genes_cbio(gene_list, disease_abbr, "tcga")
+        oncoprint_data = self.BA.find_variants_for_genes_cbio(gene_names, disease_abbr, "tcga")
 
         self.send_display_oncoprint(oncoprint_data)
 
@@ -74,25 +70,26 @@ class BMEGModule(Bioagent):
 
     def respond_find_mutation_frequency(self, content):
         """Response content to find-mutation-frequency request"""
-        gene_arg = content.gets('GENE')
+        gene_arg = content.get('GENE')
 
         if not gene_arg:
             self.make_failure('MISSING_MECHANISM')
 
-        gene_names = _get_term_names(gene_arg)
+        gene_names = _get_kqml_names(gene_arg)
+
         if not gene_names:
             return self.make_failure('MISSING_MECHANISM')
         gene_name = gene_names[0]
 
-        disease_arg = content.gets('DISEASE')
+        disease_arg = content.get('DISEASE')
         if not disease_arg:
             return self.make_failure('MISSING_MECHANISM')
 
-        disease_names = _get_term_names(disease_arg)
+        disease_names = _get_kqml_names(disease_arg)
         if not disease_names:
             return self.make_failure('INVALID_DISEASE')
 
-        disease_name = disease_names[0].replace("-", " ").lower()
+        disease_name = _sanitize_disase_name(disease_names[0])
         disease_abbr = self.BA.get_tcga_abbr(disease_name)
         if disease_abbr is None:
             return self.make_failure('INVALID_DISEASE')
@@ -105,11 +102,7 @@ class BMEGModule(Bioagent):
         reply = KQMLList('SUCCESS')
         reply.sets('mutfreq', result)
 
-        gene_list = []
-        for gene_name in gene_names:
-            gene_list.append(str(gene_name))
-
-        oncoprint_data = self.BA.find_variants_for_genes_cbio(gene_list, disease_abbr, "tcga")
+        oncoprint_data = self.BA.find_variants_for_genes_cbio(gene_names, disease_abbr, "tcga")
 
         self.send_display_oncoprint(oncoprint_data)
 
@@ -118,34 +111,30 @@ class BMEGModule(Bioagent):
 
     def respond_find_variants_for_genes(self, content):
         """Response content to find-variants-for-genes"""
-        gene_arg = content.gets('GENES')
+        gene_arg = content.get('GENES')
 
         if not gene_arg:
             self.make_failure('MISSING_MECHANISM')
 
-        gene_names = _get_term_names(gene_arg)
+        gene_names = _get_kqml_names(gene_arg)
         if not gene_names:
             return self.make_failure('MISSING_MECHANISM')
 
-        gene_list = []
-        for gene_name in gene_names:
-            gene_list.append(str(gene_name))
-
-        disease_arg = content.gets('DISEASE')
+        disease_arg = content.get('DISEASE')
         if not disease_arg:
             return self.make_failure('MISSING_MECHANISM')
 
-        disease_names = _get_term_names(disease_arg)
+        disease_names = _get_kqml_names(disease_arg)
         if not disease_names:
             return self.make_failure('INVALID_DISEASE')
 
-        disease_name = disease_names[0].replace("-", " ").lower()
+        disease_name = _sanitize_disase_name(disease_names[0])
         disease_abbr = self.BA.get_tcga_abbr(disease_name)
 
         if disease_abbr is None:
             return self.make_failure('INVALID_DISEASE')
 
-        result = self.BA.find_variants_for_genes_cbio(gene_list, disease_abbr, "tcga")
+        result = self.BA.find_variants_for_genes_cbio(gene_names, disease_abbr, "tcga")
 
         if not result:
             return self.make_failure('MISSING_MECHANISM')
@@ -158,27 +147,22 @@ class BMEGModule(Bioagent):
 
 
     def respond_find_drugs_for_mutation_dataset(self, content):
-        genes_arg = content.gets('GENES')
+        genes_arg = content.get('GENES')
 
         if not genes_arg:
             return self.make_failure('MISSING_MECHANISM')
 
-        gene_names = _get_term_names(genes_arg)
+        gene_names = _get_kqml_names(genes_arg)
 
         if not gene_names:
             return self.make_failure('MISSING_MECHANISM')
-
-        gene_list = []
-        for gene_name in gene_names:
-            gene_list.append(str(gene_name))
-
 
         dataset_arg = content.gets('DATASET')
 
         if not dataset_arg:
             dataset_arg = "CCLE"  # default cell line
 
-        result = self.BA.find_drugs_for_mutation_dataset(gene_list, dataset_arg)
+        result = self.BA.find_drugs_for_mutation_dataset(gene_names, dataset_arg)
 
         if not result:
             return self.make_failure('NO_DRUGS_FOUND')
@@ -191,39 +175,29 @@ class BMEGModule(Bioagent):
 
         reply.set('drugs', drugs)
 
-        # drugs = KQMLList.from_string(drugs.to_string())
-        # reply.set('drugs', drugs)
-
         return reply
 
 
+def _sanitize_disase_name(name):
+    """Given a disease name returns the sanitized version of it"""
+    sanitized_name = name.replace("-", " ").lower()
+    return sanitized_name
 
-def _get_term_names(term_str):
-    """Given an ekb-xml returns the names of genes in a list"""
-
-    tp = TripsProcessor(term_str)
-    terms = tp.tree.findall('TERM')
-    if not terms:
+def _get_kqml_names(kqmlList):
+    """Given a kqml list returns the names of sublists in the list"""
+    if not kqmlList:
         return None
 
-    agent_names = []
-    for term in terms:
-        term_id = term.attrib['id']
-        agent = tp._get_agent_by_id(term_id, None)
+    arr = kqmlList.data;
+    if len(arr) == 0:
+        return []
 
-        if agent is not None:
-            if isinstance(agent, list):
-                for a in agent:
-                    if a.name:
-                        agent_names.append(a.name)
-            else:
-                agent_names.append(agent.name)
+    if not isinstance(arr[0], KQMLList):
+        arr = [kqmlList]
 
-    if len(agent_names) == 0:
-        return None
+    res = list(map(lambda kl: kl.get('NAME').string_value(), arr))
 
-    return agent_names
-
+    return res
 
 
 if __name__ == "__main__":
