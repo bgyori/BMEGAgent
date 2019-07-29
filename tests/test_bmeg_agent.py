@@ -74,7 +74,7 @@ class TestVariantsCbioportal(_IntegrationTest):
 
     def create_message_1(self):
         content = KQMLList('FIND-VARIANTS-FOR-GENES')
-        genes = agent_clj_from_text('EGFR and PTEN')
+        genes = KQMLList([agent_clj_from_text('EGFR'), agent_clj_from_text('PTEN')])
         content.set('genes', genes)
 
         disease = agent_clj_from_text('glioblastoma')
