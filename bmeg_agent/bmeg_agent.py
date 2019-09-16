@@ -88,7 +88,7 @@ disease_names = {
 class BMEGAgent:
     def __init__(self):
         conn = gripql.Connection('https://bmeg.io/api', credential_file= credentials_dir+ "bmeg_credentials.json")
-        self.O = conn.graph("bmeg_rc1_2")
+        self.O = conn.graph("bmeg_rc1_3")
         print("Connected to bmeg")
 
     def get_tcga_abbr(self, long_name):
