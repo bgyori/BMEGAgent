@@ -66,7 +66,7 @@ class TestDrugMutationDataset(_IntegrationTest):
 
         drugs = output.get('drugs')
 
-        assert  'selumetinib' in drugs
+        assert  'RAF265' in drugs
 
 class TestVariantsCbioportal(_IntegrationTest):
     def __init__(self, *args):
