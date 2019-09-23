@@ -131,7 +131,8 @@ class BMEGAgent:
 
     def find_drugs_for_mutation_dataset(self, genes, dataset):
         dataset = dataset.upper()
-        q = self.O.query().V().has(getGripqlProjIdRange(dataset)).out("cases").distinct("_gid")
+        program = "Program:" + dataset
+        q = self.O.query().V(program).out("projects").out("cases").distinct("_gid")
 
         all_cases = []
         for row in q:
