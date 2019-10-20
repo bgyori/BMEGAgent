@@ -4,6 +4,7 @@ import gripql
 import itertools
 from scipy import stats
 import pdb
+import re
 
 import os
 # for cbio portal
@@ -217,8 +218,11 @@ class BMEGAgent:
                     norm_values = neg_response[g][drug]
                     if len(mut_values) > 5 and len(norm_values) > 5:
                         s = stats.ttest_ind(mut_values, norm_values, equal_var=False)
-                        if s.pvalue <= 0.05 and s.statistic > 0:  # means drug is significantly effective
-                            out.append(names[drug])
+                        if s.pvalue <= 0.05:  # means drug is significantly effective
+                            n = names[drug]
+                            n = re.sub(r"[: /]", "-", n, flags=re.I)
+                            out.append(n)
+
         return out
 
     def find_variants_for_genes_cbio(self, genes, disease, dataset= "tcga"):
