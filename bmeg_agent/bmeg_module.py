@@ -195,7 +195,7 @@ def _get_kqml_names(kqmlList):
     if not isinstance(arr[0], KQMLList):
         arr = [kqmlList]
 
-    res = list(map(lambda kl: kl.get('NAME').string_value(), arr))
+    res = list(map(lambda kl: kl.gets('NAME'), arr))
 
     return res
 
