@@ -169,9 +169,7 @@ class BMEGModule(Bioagent):
 
         reply = KQMLList('SUCCESS')
 
-        drugs = KQMLList()
-        for r in result:
-            drugs.append(r)
+        drugs = _get_drugs_cljson(result)
 
         reply.set('drugs', drugs)
 
@@ -198,6 +196,10 @@ def _get_kqml_names(kqmlList):
     res = list(map(lambda kl: kl.gets('NAME'), arr))
 
     return res
+
+def _get_drugs_cljson(drug_names):
+    agents = list(map(lambda n: Agent(n, db_refs={'TYPE': 'ont::pharmacologic-substance'}), drug_names))
+    return Bioagent.make_cljson(agents)
 
 
 if __name__ == "__main__":

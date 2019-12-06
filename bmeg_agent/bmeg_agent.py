@@ -220,7 +220,6 @@ class BMEGAgent:
                         s = stats.ttest_ind(mut_values, norm_values, equal_var=False)
                         if s.pvalue <= 0.05:  # means drug is significantly effective
                             n = names[drug]
-                            n = re.sub(r"[: /]", "-", n, flags=re.I)
                             out.append(n)
 
         return out
