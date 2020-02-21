@@ -182,7 +182,7 @@ class BMEGAgent:
                     v = 0
 
                 id = row["b"]["gid"]
-                names[id] = get_name_from_drug_response(row["b"]["data"])
+                names[id] = get_drug_name_from_compound(row["b"]["data"])
 
                 if id not in pos_response[g]:
                     pos_response[g][id] = [ v ]
@@ -202,7 +202,7 @@ class BMEGAgent:
                     v = 0
 
                 id = row["b"]["gid"]
-                names[id] = get_name_from_drug_response(row["b"]["data"])
+                names[id] = get_drug_name_from_compound(row["b"]["data"])
                 if id not in neg_response[g]:
                     neg_response[g][id] = [ v ]
                 else:
@@ -454,7 +454,7 @@ def map_to_oncoprint_mutation(cbio_mut):
 
     return oncoprint_mut
 
-def get_name_from_drug_response(drug_resp):
+def get_drug_name_from_compound(drug_resp):
     if "synonym" in drug_resp:
         name = drug_resp["synonym"]
     else:
