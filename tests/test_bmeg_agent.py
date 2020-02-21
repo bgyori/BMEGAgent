@@ -67,7 +67,7 @@ class TestDrugMutationDataset(_IntegrationTest):
         drugs = output.get('drugs')
         drug_names = list(map(lambda d: d.gets('NAME'), drugs))
 
-        assert  'RAF265' in drug_names
+        assert  'BELINOSTAT' in drug_names
 
 class TestVariantsCbioportal(_IntegrationTest):
     def __init__(self, *args):

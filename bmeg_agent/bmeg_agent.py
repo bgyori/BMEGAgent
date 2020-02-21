@@ -3,7 +3,6 @@ import gripql
 
 import itertools
 from scipy import stats
-import pdb
 import re
 
 import os
@@ -90,7 +89,7 @@ disease_names = {
 class BMEGAgent:
     def __init__(self):
         conn = gripql.Connection('https://bmeg.io/api', credential_file= credentials_dir+ "bmeg_credentials.json")
-        self.O = conn.graph("bmeg_rc2")
+        self.O = conn.graph("rc5")
         print("Connected to bmeg")
 
     def get_tcga_abbr(self, long_name):
@@ -149,7 +148,7 @@ class BMEGAgent:
         q = self.O.query().V(all_cases).as_("ds")
 
         if dataset != "CCLE":
-            q = q.out("same_as").has(getGripqlProjIdRange("Project:CCLE"))
+            q = q.out("same_as").has(gripql.eq("project_id", "Project:CCLE"))
 
         q = q.out("samples").out("aliquots").out("somatic_callsets")
         q = q.outE("alleles").has(gripql.within("ensembl_gene", list(gene_ids.values())))
@@ -168,6 +167,7 @@ class BMEGAgent:
         names = {}
 
         area_metric = "act_area" if dataset == "CCLE" else "auc"
+        area_metric = "aac"
 
         pos_response = {}
         for g in gene_ids.values():
@@ -182,7 +182,8 @@ class BMEGAgent:
                     v = 0
 
                 id = row["b"]["gid"]
-                names[id] = row["b"]["data"]["name"]
+                names[id] = get_name_from_drug_response(row["b"]["data"])
+
                 if id not in pos_response[g]:
                     pos_response[g][id] = [ v ]
                 else:
@@ -201,7 +202,7 @@ class BMEGAgent:
                     v = 0
 
                 id = row["b"]["gid"]
-                names[id] = row["b"]["data"]["name"]
+                names[id] = get_name_from_drug_response(row["b"]["data"])
                 if id not in neg_response[g]:
                     neg_response[g][id] = [ v ]
                 else:
@@ -452,6 +453,15 @@ def map_to_oncoprint_mutation(cbio_mut):
         oncoprint_mut = 'amp'
 
     return oncoprint_mut
+
+def get_name_from_drug_response(drug_resp):
+    if "synonym" in drug_resp:
+        name = drug_resp["synonym"]
+    else:
+        name = drug_resp["submitter_id"]
+
+    return name
+
 
 def getGripqlProjIdRange(prefix):
     """
