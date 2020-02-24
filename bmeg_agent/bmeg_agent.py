@@ -291,6 +291,21 @@ class BMEGAgent:
 
         return out
 
+    def get_variant_info(self, gene_name, mutation):
+        assoc_ids = self.O.query().V().hasLabel("Gene").has(gripql.eq("$.symbol", gene_name)) \
+            .out("alleles").has(gripql.eq("hgvsp_short", mutation)) \
+            .out("g2p_associations").render("_gid").execute()
+
+        res = []
+        for gid in assoc_ids:
+            assoc_q = self.O.query().V().hasLabel("G2PAssociation").has(gripql.eq("$._gid", gid))
+            response_type = assoc_q.render("response_type").execute()[0]
+            disease_name = assoc_q.out("phenotypes").render("name").execute()[0]
+            url = assoc_q.out("publications").render("url").execute()[0]
+
+            res.append([response_type, disease_name, url])
+        return res
+
     # Looks like this method is never used so just commented it out for now.
     # The changes that are done for adopting 'bmeg_rc2' is not applied to this method.
 
@@ -472,6 +487,7 @@ def getGripqlProjIdRange(prefix):
     return gripql.between("project_id", prefix + "_A", prefix + "_zz")
 
 # ba = BMEGAgent()
+# print(ba.get_variant_info('TP53', 'p.S241F'))
 # ba.find_mutation_frequency("TP53", "OV")
 
 # print(ba.find_variants_for_genes_cbio(['PTEN'],'BRCA','tcga'))

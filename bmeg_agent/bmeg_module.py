@@ -15,7 +15,7 @@ logger = logging.getLogger('BMEGA')
 
 class BMEGModule(Bioagent):
     name = 'BMEGA'
-    tasks = ['FIND-GENE-MUTATION-DATASET','FIND-MUTATION-FREQUENCY', 'FIND-COMMON-PHENOTYPES-FOR-GENES', 'FIND-DRUGS-FOR-MUTATION-DATASET', 'FIND-VARIANTS-FOR-GENES', 'SHOW-MUTATION-DATA']
+    tasks = ['FIND-GENE-MUTATION-DATASET','FIND-MUTATION-FREQUENCY', 'FIND-COMMON-PHENOTYPES-FOR-GENES', 'FIND-DRUGS-FOR-MUTATION-DATASET', 'FIND-VARIANTS-FOR-GENES', 'SHOW-MUTATION-DATA', 'GET-VARIANT-INFO']
 
     def __init__(self, **kwargs):
         self.BA = BMEGAgent()
@@ -172,6 +172,23 @@ class BMEGModule(Bioagent):
         drugs = _get_drugs_cljson(result)
 
         reply.set('drugs', drugs)
+
+        return reply
+
+    def respond_get_variant_info(self, content):
+        # TODO: may need to be revised if considered to be used by clic in the future
+        gene_arg = content.get('GENE')
+        mutation_name = content.gets('MUTATION')
+
+        gene_name = _get_kqml_names(gene_arg)[0]
+        result = self.BA.get_variant_info(gene_name, mutation_name)
+
+        if not result:
+            return self.make_failure('NO_INFO_FOUND')
+
+        reply = KQMLList('SUCCESS')
+
+        reply.sets('info', str(result))
 
         return reply
 

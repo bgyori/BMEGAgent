@@ -112,4 +112,23 @@ class TestVariantsCbioportal(_IntegrationTest):
     #
     #     assert 'amplification' in variants
 
+class TestVariantInfo(_IntegrationTest):
+    def __init__(self, *args):
+        super(TestVariantInfo, self).__init__(BMEGModule)
 
+    def create_message_1(self):
+        content = KQMLList('GET-VARIANT-INFO')
+        gene = agent_clj_from_text('TP53')
+        content.set('gene', gene)
+
+        mutation = 'p.S241F'
+        content.sets('mutation', mutation)
+
+        msg = get_request(content)
+        return msg, content
+
+    def check_response_to_message_1(self, output):
+        assert output.head() == 'SUCCESS', output
+        info = output.gets('info')
+
+        assert 'sensitive' in info
