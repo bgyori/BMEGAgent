@@ -292,6 +292,10 @@ class BMEGAgent:
         return out
 
     def get_variant_info(self, gene_name, mutation):
+        # Prepend 'p.' to the mutation name where 'p'
+        # represents a protein
+        mutation = 'p.' + mutation
+
         assoc_ids = self.O.query().V().hasLabel("Gene").has(gripql.eq("$.symbol", gene_name)) \
             .out("alleles").has(gripql.eq("hgvsp_short", mutation)) \
             .out("g2p_associations").render("_gid").execute()
@@ -299,9 +303,14 @@ class BMEGAgent:
         res = []
         for gid in assoc_ids:
             assoc_q = self.O.query().V().hasLabel("G2PAssociation").has(gripql.eq("$._gid", gid))
-            response_type = assoc_q.render("response_type").execute()[0]
-            disease_name = assoc_q.out("phenotypes").render("name").execute()[0]
-            url = assoc_q.out("publications").render("url").execute()[0]
+            def safe_get_first(l):
+                if len(l) == 0:
+                    return None
+                return l[0]
+
+            response_type = safe_get_first(assoc_q.render("response_type").execute())
+            disease_name = safe_get_first(assoc_q.out("phenotypes").render("name").execute())
+            url = safe_get_first(assoc_q.out("publications").render("url").execute())
 
             res.append([response_type, disease_name, url])
         return res
