@@ -311,8 +311,10 @@ class BMEGAgent:
             response_type = safe_get_first(assoc_q.render("response_type").execute())
             disease_name = safe_get_first(assoc_q.out("phenotypes").render("name").execute())
             url = safe_get_first(assoc_q.out("publications").render("url").execute())
+            compounds = assoc_q.out("compounds").execute()
+            drug_name = safe_get_first(list(map(lambda c: get_drug_name_from_compound(c["data"]), compounds)))
 
-            res.append([response_type, disease_name, url])
+            res.append([drug_name, response_type, disease_name, url])
         return res
 
     # Looks like this method is never used so just commented it out for now.
