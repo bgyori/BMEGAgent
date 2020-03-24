@@ -6,10 +6,12 @@ from scipy import stats
 import re
 
 import os
+import json
 # for cbio portal
 import http.client, urllib.parse
 
 credentials_dir = os.path.dirname(os.path.realpath(__file__)) + '/../credentials/'
+credential_file = credentials_dir+ "bmeg_credentials.json"
 
 disease_names = {
 'ADRENOCORTICAL CARCINOMA':	'ACC',
@@ -88,6 +90,15 @@ disease_names = {
 
 class BMEGAgent:
     def __init__(self):
+        if not os.path.exists(credential_file):
+            with open(credential_file, 'w') as cfile:
+                cdata = {
+                    'OauthEmail': os.environ['BMEGAOauthEmail'],
+                    'OauthAccessToken': os.environ['BMEGAOauthAccessToken'],
+                    'OauthExpires': os.environ['BMEGAOauthExpires']
+                }
+                json.dump(cdata, cfile)
+
         conn = gripql.Connection('https://bmeg.io/api', credential_file= credentials_dir+ "bmeg_credentials.json")
         self.O = conn.graph("rc5")
         print("Connected to bmeg")
