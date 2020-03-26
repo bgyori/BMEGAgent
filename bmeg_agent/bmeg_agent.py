@@ -93,9 +93,9 @@ class BMEGAgent:
         if not os.path.exists(credential_file):
             with open(credential_file, 'w') as cfile:
                 cdata = {
-                    'OauthEmail': os.environ['BMEGAOauthEmail'],
-                    'OauthAccessToken': os.environ['BMEGAOauthAccessToken'],
-                    'OauthExpires': os.environ['BMEGAOauthExpires']
+                    'OauthEmail': os.environ.get('BMEGAOauthEmail', ''),
+                    'OauthAccessToken': os.environ.get('BMEGAOauthAccessToken', ''),
+                    'OauthExpires': os.environ.get('BMEGAOauthExpires', '')
                 }
                 json.dump(cdata, cfile)
 
